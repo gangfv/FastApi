@@ -1,9 +1,11 @@
-from pydantic import BaseModel
+from typing import List
+
+from pydantic import BaseModel, Field
 
 
 class User(BaseModel):
     id: int
-    name: str
+    username: str
 
 
 class UploadVideo(BaseModel):
@@ -11,9 +13,14 @@ class UploadVideo(BaseModel):
     description: str
 
 
-class GetVideo(BaseModel):
+class GetListVideo(BaseModel):
+    id: int
+    title: str
+    description: str
+
+
+class GetVideo(GetListVideo):
     user: User
-    video: UploadVideo
 
 
 class Message(BaseModel):
